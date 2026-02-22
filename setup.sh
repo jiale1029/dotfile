@@ -111,7 +111,24 @@ cp -v "$(dirname "$0")/dotfiles/settings.json" "$HOME/Library/Application Suppor
 echo "Dotfiles copied. Please restart your terminal for .zshrc changes to take effect."
 echo "For iTerm2 settings, you may need to manually import the 'com.googlecode.iterm2.plist' file."
 
-# 7. Generate SSH key for GitHub
+# 7. Install Claude Code
+echo "Installing Claude Code..."
+if command -v npm &> /dev/null; then
+    sudo npm install -g @anthropic-ai/claude-code
+else
+    echo "WARNING: npm not found. Skipping Claude Code installation."
+fi
+
+# 8. Install Extensions
+echo "Installing Monokai Pro extension..."
+if command -v code &> /dev/null; then
+    code --install-extension monokai-pro-vscode
+fi
+if command -v cursor &> /dev/null; then
+    cursor --install-extension monokai-pro-vscode
+fi
+
+# 9. Generate SSH key for GitHub
 if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
     echo "Generating SSH key for GitHub..."
     read -p "Enter your GitHub email: " github_email
@@ -141,7 +158,7 @@ else
     echo "SSH key already exists at ~/.ssh/id_ed25519, skipping generation."
 fi
 
-# 8. Set up Google Cloud SDK (uncomment when needed)
+# 10. Set up Google Cloud SDK (uncomment when needed)
 # echo "Setting up Google Cloud SDK..."
 # if command -v gcloud &> /dev/null; then
 #     echo "Google Cloud SDK found. Running 'gcloud init'..."
