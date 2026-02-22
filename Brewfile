@@ -11,4 +11,4 @@ brew "curl"
 # Casks (Applications)
 cask "iterm2"
 cask "cursor"
-cask "google-cloud-sdk"
+# cask "google-cloud-sdk"

@@ -135,21 +135,21 @@ else
     echo "SSH key already exists at ~/.ssh/id_ed25519, skipping generation."
 fi
 
-# 7. Set up Google Cloud SDK
-echo "Setting up Google Cloud SDK..."
-if command -v gcloud &> /dev/null; then
-    echo "Google Cloud SDK found. Running 'gcloud init'..."
-    gcloud init
-else
-    # Source gcloud from Homebrew if not yet on PATH
-    if [ -f "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc" ]; then
-        source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-        source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-        echo "Google Cloud SDK sourced. Running 'gcloud init'..."
-        gcloud init
-    else
-        echo "WARNING: Google Cloud SDK not found. Please install it and run 'gcloud init' manually."
-    fi
-fi
+# 7. Set up Google Cloud SDK (uncomment when needed)
+# echo "Setting up Google Cloud SDK..."
+# if command -v gcloud &> /dev/null; then
+#     echo "Google Cloud SDK found. Running 'gcloud init'..."
+#     gcloud init
+# else
+#     # Source gcloud from Homebrew if not yet on PATH
+#     if [ -f "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc" ]; then
+#         source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+#         source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+#         echo "Google Cloud SDK sourced. Running 'gcloud init'..."
+#         gcloud init
+#     else
+#         echo "WARNING: Google Cloud SDK not found. Please install it and run 'gcloud init' manually."
+#     fi
+# fi
 
 echo "Setup script finished!"

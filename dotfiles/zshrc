@@ -104,9 +104,9 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Google Cloud SDK
-[ -f "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc" ] && source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-[ -f "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc" ] && source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+# Google Cloud SDK (uncomment when needed)
+# [ -f "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc" ] && source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+# [ -f "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc" ] && source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 export PATH=$HOME/.local/bin:$PATH
 export PATH=/usr/local/go/bin:$HOME/go/bin:$PATH
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
