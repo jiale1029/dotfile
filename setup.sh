@@ -84,7 +84,13 @@ if ! command -v go &> /dev/null || [[ "$reinstall_go" =~ ^[Yy]$ ]]; then
     echo "Go installed successfully: $(/usr/local/go/bin/go version)"
 fi
 
-# 4. Install Oh My Zsh if not already installed
+# 4. Install Go tools
+echo "Installing Go tools..."
+/usr/local/go/bin/go install golang.org/x/tools/cmd/goimports@latest
+/usr/local/go/bin/go install golang.org/x/tools/gopls@latest
+/usr/local/go/bin/go install github.com/go-delve/delve/cmd/dlv@latest
+
+# 5. Install Oh My Zsh if not already installed
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "Oh My Zsh not found, installing..."
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -92,7 +98,7 @@ else
     echo "Oh My Zsh is already installed."
 fi
 
-# 5. Copy dotfiles
+# 6. Copy dotfiles
 echo "Copying dotfiles..."
 cp -v "$(dirname "$0")/dotfiles/zshrc" "$HOME/.zshrc"
 cp -v "$(dirname "$0")/dotfiles/gitconfig" "$HOME/.gitconfig"
@@ -105,7 +111,7 @@ cp -v "$(dirname "$0")/dotfiles/settings.json" "$HOME/Library/Application Suppor
 echo "Dotfiles copied. Please restart your terminal for .zshrc changes to take effect."
 echo "For iTerm2 settings, you may need to manually import the 'com.googlecode.iterm2.plist' file."
 
-# 6. Generate SSH key for GitHub
+# 7. Generate SSH key for GitHub
 if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
     echo "Generating SSH key for GitHub..."
     read -p "Enter your GitHub email: " github_email
@@ -135,7 +141,7 @@ else
     echo "SSH key already exists at ~/.ssh/id_ed25519, skipping generation."
 fi
 
-# 7. Set up Google Cloud SDK (uncomment when needed)
+# 8. Set up Google Cloud SDK (uncomment when needed)
 # echo "Setting up Google Cloud SDK..."
 # if command -v gcloud &> /dev/null; then
 #     echo "Google Cloud SDK found. Running 'gcloud init'..."
